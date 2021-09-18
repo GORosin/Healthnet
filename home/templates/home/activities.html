@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activities</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<h2>Activity List:</h2>
+{% if activity_list %}
+    <ul>
+        {% for activity in activity_list %}
+        <li>
+		{{activity.timestamp}}<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{activity.User_ID}} {{activity.Activity_Details}} {{activity.Effected_ID}}
+        </li>
+        {% endfor %}
+    </ul>
+{%else%}
+    <p> No Activities available</p>
+{% endif %}
+<button onclick="window.location.href='/home'">
+    return
+</button>
+</body>
+</html>

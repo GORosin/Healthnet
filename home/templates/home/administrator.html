@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrators</title>
+    {% include "home/include/header.html" %}
+
+</head>
+<body>
+{% if user.is_authenticated %}
+<h2>Administrator List:</h2>
+{% if administrator_list %}
+    <ul>
+        {% for administrator in administrator_list %}
+        <li>
+            {{administrator.username}}
+        </li>
+        {% endfor %}
+    </ul>
+{%else%}
+    <p> No Administrators available</p>
+{% endif %}
+{% else %}
+You must login or register to view this page<br/>
+<button onclick="window.location. href='{% url 'home:register' %}'">
+        Register New User Patient
+</button><br/>
+{% endif %}
+<button onclick="window.location.href='/home'">
+    return
+</button>
+</body>
+</html>

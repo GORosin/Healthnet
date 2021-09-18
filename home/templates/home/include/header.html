@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthnet</title>
+<style>
+    h1{background-color : #000080; color: gold}
+</style>
+</head>
+<h1><font face="Georgia" size="45" > HealthNet</font>
+
+    <button onclick="window.location.href='/home'",
+    style="float: right; background-color: #000080; color: gold">
+   Home
+</button>
+
+
+{% if not user.is_authenticated %}
+<button onclick = "window.location.href='{% url 'home:login' %}'",
+        style="float: right; background-color: #000080; color: gold">
+    Login
+</button>
+      <button onclick="window.location. href='{% url 'home:register' %}'",
+      style="float: right; background-color: #000080; color: gold">
+        Register New User Patient
+</button><br/>
+{% endif %}
+
+
+{% if user.is_authenticated %}
+<button onclick = "window.location.href='{% url 'home:logout' %}'",
+        style="float: right; background-color: #000080; color: gold">
+    Logout
+</button>
+
+    {% endif %}
+    {% if user.is_authenticated %}
+        <font face="Georgia" size="2", style="float: right">
+            {% if user.first_name %}
+                Hello, {{user.first_name}} {{user.last_name}}
+            {% else %}
+                Hello, {{user.username}}
+            {% endif %}
+        </font>
+    {% endif %}
+</h1>
+
+<body>
+
+</body>
+</html>
